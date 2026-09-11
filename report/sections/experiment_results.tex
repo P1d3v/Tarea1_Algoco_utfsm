@@ -1,0 +1,63 @@
+\begin{mdframed}
+    En la fabricación de los gráficos para describir los comportamientos de estos algoritmos, se prefirió usar gráficos que comparen memoria o tiempo contra el tamaño del arreglo o matriz, según su característica, además de su dominio de valores de los elementos.  
+
+    Para respetar el tamaño que se solicita en esta parte, solo mostraré un gráfico si se ve una anomalía respecto a lo que se espera teóricamente. Pero primero, describiré las pruebas que se hicieron a las matrices.
+
+    En primera instancia, por la complejidad del algoritmo de Strassen que es $O(n^{\log_2 7})$, en las mediciones de tiempo vs. tamaño de la entrada, se mostró que el algoritmo naive fue mucho más rápido. Pero esto es consecuencia de que, como uso un promedio de los casos a, b y c en los distintos tamaños, pierdo esa variación; porque viendo las mediciones como tal en el archivo, sí hay diferencia a favor de Strassen.
+\end{mdframed}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lineas_D1_aleatorio.png}
+    \caption{Enter Caption}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{mdframed}
+    En cuanto a la memoria, era de esperar que Strassen use más por la separación en pequeñas matrices, haciendo más uso del árbol de recursión. En cambio, con el naive, como son operaciones elementales, su coste de memoria no es tan alto. También se vio que, entre los tipos de matrices que se usaron de entrada, los resultados no variaron mucho en su comportamiento.
+
+    Ahora bien, en las pruebas hechas en los arreglos, si hablamos de tiempo, se hicieron varias observaciones. Primero, en cuanto a cómo se comportaron los algoritmos según el rango donde se mueven los valores de los elementos de los arreglos, los que forman parte de D1 siguen una misma jerarquía que no varía mucho: en último lugar está el merge sort, luego viene patience sort, después std sort y, por último, quick sort (estos dos últimos por poca diferencia). Pero, en la mayoría de los tipos de arreglos de este dominio, el quick sort se ve como el más eficiente si medimos su tiempo de ejecución.
+\end{mdframed}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lineas_D1_decrecientemente.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{mdframed}
+    Ahora, si vemos los dominios con valores de elementos mucho más grandes, el comportamiento anterior cambia. El std sort sigue siendo el más eficiente en la mayoría de los casos, pero ahora los tipos de arreglos hacen que ciertos algoritmos se destaquen más, como el patience sort en arreglos descendentes, aunque en los aleatorios no rinde muy bien. También se comprueba el comportamiento del quick sort en los peores casos, cuando el arreglo es ascendente y descendente.
+\end{mdframed}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lineas_D7_descendente.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{lineas_D7_ascendente.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{mdframed}
+    Continuando con la perspectiva de la memoria en el dominio D1, el comportamiento del std sort y merge sort es casi idéntico, manteniéndose en un uso de memoria intermedio en comparación con los otros. Aunque en algunos tipos de arreglos coinciden en el uso de memoria con el patience sort (cuando es descendente), el patience sort eleva su uso de memoria en la mayoría de los casos.
+\end{mdframed}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{memoria_lineas_D1_descendente.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{mdframed}
+    Siguiendo con el análisis de la memoria respecto al tamaño, acá en el dominio D7 la jerarquía de quién usa más o menos memoria se mantiene igual independiente del tipo de arreglo. El que más usa es el patience sort; el merge sort y el std sort tienen un comportamiento similar, y por último, el quick sort sería el que menos memoria usó en su ejecución.
+\end{mdframed}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{memoria_lineas_D7_descendente.png}
+    \label{fig:placeholder}
+\end{figure}
+
