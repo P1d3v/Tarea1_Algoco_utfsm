@@ -22,7 +22,7 @@ generar-inputs:
 generar_plots:
 	python scripts/plot_generator.py
 
-pruebas: generar-inputs
+experimento: generar-inputs
 	$(MAKE) run INPUT_DIR="$(INPUT_DIR)" OUTPUT_DIR="$(OUTPUT_DIR)" MEASUREMENTS="$(MEASUREMENTS)"
 
 clean:
